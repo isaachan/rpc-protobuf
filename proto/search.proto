@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+message SearchRequest {
+    string query = 1;
+    int32 pageNumber = 2;
+    int32 resultPerPage = 3;
+}
+
+message SearchResponse {
+    repeated Result resutls = 1;
+}
+
+message Result {
+    string url = 1;
+    string title = 2;
+    repeated string snippets = 3;
+}
+
+service SearchService {
+    rpc Search(SearchRequest) returns (SearchResponse);
+}
